@@ -1,0 +1,22 @@
+apiVersion: config.kiosk.sh/v1alpha1
+kind: Template
+metadata:
+  name: allow-dns
+resources:
+  manifests:
+    - apiVersion: networking.k8s.io/v1
+      kind: NetworkPolicy
+      metadata:
+        name: allow-dns
+      spec:
+        podSelector: {}
+        egress:
+        - to:
+          ports:
+          - protocol: TCP
+            port: 53
+          - protocol: UDP
+            port: 53
+        policyTypes:
+          - Ingress
+          - Egress

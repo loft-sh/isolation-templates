@@ -1,0 +1,21 @@
+apiVersion: config.kiosk.sh/v1alpha1
+kind: Template
+metadata:
+  name: network-allow-same-namespace
+resources:
+  manifests:
+    - apiVersion: networking.k8s.io/v1
+      kind: NetworkPolicy
+      metadata:
+        name: allow-same-namespace
+      spec:
+        podSelector: {}
+        ingress:
+          - from:
+            - podSelector: {}
+        egress:
+          - to:
+            - podSelector: {}
+        policyTypes:
+          - Ingress
+          - Egress
