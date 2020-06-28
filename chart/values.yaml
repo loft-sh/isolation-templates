@@ -1,3 +1,6 @@
 # Default values for isolation-templates.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
+
+podSecurityPolicy:
+  enabled: false
